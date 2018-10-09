@@ -1,0 +1,58 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+
+<body>
+    <script>    
+      var app = angular.module('myApp', []);
+      app.controller('myCtrl', function($scope) {
+         const vm = this;
+         var tipos = ['var', 'let', 'const'];
+         var expressao;
+         vm.validandoExpressao = validandoExpressao
+
+         function validandoExpressao(expressao) {
+             debugger
+             var teste = expressao.split(" ");
+             var aprovado = false;
+             var regex = /[^a-zA-Z 0-9]/;
+             if(teste[0].includes("var" || "let" || "const") && teste[2].includes("=") ) {
+                aprovado = true;
+             } else if(teste[1].includes("=")) {
+
+             } else {   
+                 aprovado = false;  
+             }
+             var nomeVariavel = teste[1].match(regex);
+            console.log(expressao)
+         }
+        $scope.validandoExpressao = validandoExpressao;
+    });
+    </script>
+
+    <hr>
+    <div ng-app="myApp" ng-controller="myCtrl" class="col-md-12">
+        <div class="col-md-6">
+            <div class="col-md-6">
+                <input class="form-control" ng-model="expressao" placeholder="expressão aqui"> {{expressao}}
+            </div>
+
+            <div class="col-md-4">
+                <button ng-click="validandoExpressao(expressao)" class="btn btn-success">VALIDAR</button>
+
+            </div>
+        </div>
+    </div>
+    <hr>
+</body>
+
+</html>
+
+
+
