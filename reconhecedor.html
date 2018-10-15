@@ -23,14 +23,17 @@
              var teste = expressao.split(" ");
              var aprovado = false;
              var regex = "[0-9a-zA-Z]*"
-             if(teste[0].includes("var" || "let" || "const") && teste[1].match(regex) &&  teste[2].includes("=") && teste[3].match(regex)) {
+             var tipos = ["var", "let", "const"];
+             var declaracao = ["{}", "[]"];
+             debugger
+             if(teste.length > 1 && teste[0].indexOf(tipos) && teste[1].match(regex) &&  teste[2].includes("=") && teste[3].match(regex) && !teste[3].includes("{}") && !teste[3].includes("[]")) {
                 aprovado = true;
                 this.resultado = "A gramática é: <type> <var> = <expr>"
                 console.log("<type> <var> = <expr>");
-             } else if(teste[0].match(regex) && teste[1].includes("=") && teste[2].match(regex)) {
+             } else if(teste.length > 1 && teste[0].match(regex) && teste[1].includes("=") && teste[2].match(regex)) {
                 console.log(" <var> = <expr>")
                   this.resultado = "A gramática é: <var> = <expr>"
-             } else if(teste[0].includes("var" || "let" || "const") && teste[1].match(regex) && teste[2].includes("=") && teste[3].includes("[]" || "{}")) {   
+             } else if(teste.length > 1 && teste[0].indexOf(tipos) && teste[1].match(regex) && teste[2].includes("=") && (teste[3].includes("{}") || teste[3].includes("[]"))) {   
                  console.log("<type> <var> = <declare>") 
                  this.resultado = "A gramática é: <type> <var> = <declare>"
              } else {
