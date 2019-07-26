@@ -1,6 +1,5 @@
 # Reconhecedor Javascript - BNF
 
-![Screenshot](reco-javascript.png)
 
 ### Regras
 ```
